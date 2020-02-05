@@ -24,7 +24,5 @@ test('packs the rectangle accordingly', () => {
     const target = new Rectangle(105, 297);
     const result = pack(source, target);
 
-    console.log(result);
-
     expect(result).toBeDefined();
 });
