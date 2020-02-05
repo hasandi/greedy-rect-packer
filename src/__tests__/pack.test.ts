@@ -3,8 +3,8 @@ import Rectangle from '../Rectangle';
 import TargetRectangleSizeError from '../errors/TargetRectangleSizeError';
 
 test('throws error if the target is smaller than the source', () => {
-    let source = new Rectangle(100, 100);
-    let target = new Rectangle(10, 10);
+    const source = new Rectangle(100, 100);
+    const target = new Rectangle(10, 10);
 
     expect(() => {
         pack(source, target);
@@ -12,9 +12,9 @@ test('throws error if the target is smaller than the source', () => {
 });
 
 test('returns one combination if the source and target size is the same', () => {
-    let source = new Rectangle(10, 10);
-    let target = new Rectangle(10, 10);
-    let result = pack(source, target);
+    const source = new Rectangle(10, 10);
+    const target = new Rectangle(10, 10);
+    const result = pack(source, target);
 
     expect(result.length).toBe(1);
 });

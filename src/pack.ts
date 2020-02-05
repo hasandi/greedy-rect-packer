@@ -12,7 +12,7 @@ function pack(source: Rectangle, target: Rectangle): Rectangle[] {
     } else if (target.width === source.width && target.height === source.height) {
         return [new Rectangle(target.width, target.height)];
     } else {
-        let result: Rectangle[] = [];
+        const result: Rectangle[] = [];
 
         source.orientations().forEach(orientation => {
             for (let i = orientation.height; i <= target.height; i += orientation.height)

@@ -55,23 +55,23 @@ class Rectangle {
     /**
      * Returns the rectangular object in portrait orientation.
      */
-    portrait() {
+    portrait(): Rectangle {
         return this.isPortrait() ? this : clone(this).rotate90Deg();
     }
 
     /**
      * Returns the rectangular object in landscape orientation.
      */
-    landscape() {
+    landscape(): Rectangle {
         return this.isLandscape() ? this : clone(this).rotate90Deg();
     }
 
     /**
      * Returns rectangular object in all orientations.
      */
-    orientations() {
-        let portrait = clone(this).portrait();
-        let landscape = clone(this).landscape();
+    orientations(): Rectangle[] {
+        const portrait = clone(this).portrait();
+        const landscape = clone(this).landscape();
 
         return [portrait, landscape];
     }
