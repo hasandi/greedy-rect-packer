@@ -25,10 +25,17 @@ class Rectangle {
     }
 
     /**
-     * Width setter.
+     * Height getter.
      */
     get height(): number {
         return this._height;
+    }
+
+    /**
+     * Area getter.
+     */
+    get area(): number {
+        return this._width * this._height;
     }
 
     /**
@@ -56,33 +63,38 @@ class Rectangle {
      * Returns the rectangular object in portrait orientation.
      */
     portrait(): Rectangle {
-        return this.isPortrait() ? this : clone(this).rotate90Deg();
+        return this.isPortrait() ? clone(this) : clone(this).rotate90Deg();
     }
 
     /**
      * Returns the rectangular object in landscape orientation.
      */
     landscape(): Rectangle {
-        return this.isLandscape() ? this : clone(this).rotate90Deg();
+        return this.isLandscape() ? clone(this) : clone(this).rotate90Deg();
     }
 
     /**
      * Returns rectangular object in all orientations.
      */
     orientations(): Rectangle[] {
-        const portrait = clone(this).portrait();
-        const landscape = clone(this).landscape();
+        if (this.isSquare()) {
+            return [clone(this)];
+        } else {
+            const portrait = clone(this).portrait();
+            const landscape = clone(this).landscape();
 
-        return [portrait, landscape];
+            return [portrait, landscape];
+        }
     }
 
     /**
      * Rotates the rectangular object by 90 degrees.
      */
     rotate90Deg(): Rectangle {
-        [this._width, this._height] = [this._height, this._width];
+        const rect = clone(this);
+        [rect._width, rect._height] = [rect._height, rect._width];
 
-        return this;
+        return rect;
     }
 }
 

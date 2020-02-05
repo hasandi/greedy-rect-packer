@@ -7,6 +7,12 @@ test('has width and height which were numbers', () => {
     expect(typeof rect.height).toBe('number');
 });
 
+test('its area can be calculated', () => {
+    const rect = new Rectangle(10, 10);
+
+    expect(rect.area).toBe(100);
+});
+
 test("can be checked whether it's a square", () => {
     const shape1 = new Rectangle(10, 10);
     expect(shape1.isSquare()).toBe(true);
@@ -33,11 +39,10 @@ test("can be checked whether it's in landscape position", () => {
 
 test('can be rotated', () => {
     const rect = new Rectangle(20, 10);
+    const rotatedRect = rect.rotate90Deg();
 
-    rect.rotate90Deg();
-
-    expect(rect.width).toBe(10);
-    expect(rect.height).toBe(20);
+    expect(rotatedRect.width).toBe(10);
+    expect(rotatedRect.height).toBe(20);
 });
 
 test('can get all orientations', () => {
