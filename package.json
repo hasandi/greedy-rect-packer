@@ -1,0 +1,39 @@
+{
+  "name": "greedy-rect-packer",
+  "version": "1.0.0",
+  "description": "Rectangle packer using greedy algorithm.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "test": "jest --config jestconfig.json",
+    "build": "tsc",
+    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
+    "lint": "eslint . --ext .js,.ts --fix",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm test && npm run lint",
+    "preversion": "npm run lint",
+    "version": "npm run format && git add -A src",
+    "postversion": "git push && git push --tags"
+  },
+  "author": "Hasandi Patriawan",
+  "license": "MIT",
+  "files": [
+    "dist/**/*"
+  ],
+  "devDependencies": {
+    "@types/jest": "^25.1.1",
+    "@types/lodash-es": "^4.17.3",
+    "@typescript-eslint/eslint-plugin": "^2.19.0",
+    "@typescript-eslint/parser": "^2.19.0",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.10.0",
+    "eslint-plugin-prettier": "^3.1.2",
+    "jest": "^25.1.0",
+    "prettier": "^1.19.1",
+    "ts-jest": "^25.2.0",
+    "typescript": "^3.7.5"
+  },
+  "dependencies": {
+    "lodash-es": "^4.17.15"
+  }
+}
