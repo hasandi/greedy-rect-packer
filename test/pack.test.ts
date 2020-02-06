@@ -1,6 +1,6 @@
-import pack from '../pack';
-import Rectangle from '../Rectangle';
-import TargetRectangleSizeError from '../errors/TargetRectangleSizeError';
+import pack from '../src/pack';
+import Rectangle from '../src/Rectangle';
+import TargetRectangleSizeError from '../src/errors/TargetRectangleSizeError';
 
 test('throws error if the target is smaller than the source', () => {
     const source = new Rectangle(100, 100);

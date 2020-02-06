@@ -1,4 +1,4 @@
-import Rectangle from '../Rectangle';
+import Rectangle from '../src/Rectangle';
 
 test('has width and height which were numbers', () => {
     const rect = new Rectangle(20, 10);
