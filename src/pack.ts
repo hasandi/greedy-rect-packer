@@ -7,7 +7,7 @@ import TargetRectangleSizeError from './errors/TargetRectangleSizeError';
  * @param source - the rectangle to be packed
  * @param target - the rectangle to be packed on
  */
-function pack(source: Rectangle, target: Rectangle): PackResult[] {
+export default function pack(source: Rectangle, target: Rectangle): PackResult[] {
     if (target.width < source.width || target.height < source.height) {
         throw new TargetRectangleSizeError();
     }
@@ -32,5 +32,3 @@ function pack(source: Rectangle, target: Rectangle): PackResult[] {
 
     return result;
 }
-
-export default pack;

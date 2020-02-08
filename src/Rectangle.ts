@@ -3,7 +3,7 @@ import clone from 'lodash-es/clone';
 /**
  * Rectangle class.
  */
-class Rectangle {
+export default class Rectangle {
     private _width: number;
     private _height: number;
 
@@ -97,5 +97,3 @@ class Rectangle {
         return rect;
     }
 }
-
-export default Rectangle;
