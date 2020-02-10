@@ -8,7 +8,7 @@ import TargetRectangleSizeError from './errors/TargetRectangleSizeError';
  * @param target - the rectangle to be packed on
  */
 export default function pack(source: Rectangle, target: Rectangle): PackResult[] {
-    if (target.width < source.width || target.height < source.height) {
+    if (target.width < source.width && target.height < source.height) {
         throw new TargetRectangleSizeError();
     }
 
