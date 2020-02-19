@@ -3,19 +3,26 @@ import TargetRectangleSizeError from './errors/TargetRectangleSizeError';
 import Rectangle from './Rectangle';
 
 /**
- * Packs a rectangle to another rectangle.
- * @param source - the rectangle to be packed
- * @param target - the rectangle to be packed on
+ * Packs a rectangle to another rectangle and return a result with the least waste.
+ * @param source
+ * @param target
  */
-export default function pack(
+export default function packMinWaste(
   source: Rectangle,
   target: Rectangle,
-): PackResult[] {
+): PackResult {
   if (target.width < source.width && target.height < source.height) {
     throw new TargetRectangleSizeError();
   }
 
-  const result: PackResult[] = [];
+  let result: PackResult = {
+    width: 1,
+    height: 1,
+    widthAmount: 1,
+    heightAmount: 1,
+    totalAmount: 1,
+    wastePercentage: 1,
+  };
 
   source.orientations().forEach(orientation => {
     for (
@@ -36,14 +43,16 @@ export default function pack(
         const totalAmount = widthAmount * heightAmount;
         const wastePercentage = 1 - rectangle.area / target.area;
 
-        result.push({
-          width,
-          height,
-          widthAmount,
-          heightAmount,
-          totalAmount,
-          wastePercentage,
-        });
+        if (!result || wastePercentage < result.wastePercentage) {
+          result = {
+            width,
+            height,
+            widthAmount,
+            heightAmount,
+            totalAmount,
+            wastePercentage,
+          };
+        }
       }
     }
   });
