@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.4](https://github.com/hasandi/greedy-rect-packer/compare/v1.0.3...v1.0.4) (2020-02-19)
+
+
+### Features
+
+* pack with a minimum waste ([1f4242b](https://github.com/hasandi/greedy-rect-packer/commit/1f4242b62f2f9729e4829db9a097974b781772b2))
+
 ### [1.0.3](https://github.com/hasandi/greedy-rect-packer/compare/v1.0.2...v1.0.3) (2020-02-10)
 
 
