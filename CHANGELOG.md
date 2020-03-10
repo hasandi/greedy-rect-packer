@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.6](https://github.com/hasandi/greedy-rect-packer/compare/v1.0.5...v1.0.6) (2020-03-10)
+
+
+### Features
+
+* added toggle to pack in all orientations ([68a646f](https://github.com/hasandi/greedy-rect-packer/commit/68a646f4569c63c5e3a4d6a33e1bc2d66918a776))
+
 ### [1.0.5](https://github.com/hasandi/greedy-rect-packer/compare/v1.0.4...v1.0.5) (2020-03-10)
 
 ### [1.0.4](https://github.com/hasandi/greedy-rect-packer/compare/v1.0.3...v1.0.4) (2020-02-19)
