@@ -26,3 +26,23 @@ test('packs the rectangle accordingly', () => {
 
   expect(result).toBeDefined();
 });
+
+test('packs a square in just one orientations resulting the same result in all orientations', () => {
+  const source = new Rectangle(50, 50);
+  const target = new Rectangle(210, 297);
+  const allOrientationsResult = pack(source, target);
+  const oneOrientationResult = pack(source, target, false);
+
+  expect(oneOrientationResult.length).toBe(allOrientationsResult.length);
+});
+
+test('packs a rectangle in just one orientations resulting in less than half of the result in all orientations', () => {
+  const source = new Rectangle(105, 210);
+  const target = new Rectangle(210, 297);
+  const allOrientationsResult = pack(source, target);
+  const oneOrientationResult = pack(source, target, false);
+
+  expect(oneOrientationResult.length).toBe(
+    Math.floor(allOrientationsResult.length / 2),
+  );
+});

@@ -10,14 +10,16 @@ import Rectangle from './Rectangle';
 export default function pack(
   source: Rectangle,
   target: Rectangle,
+  inAllOrientations = true,
 ): PackResult[] {
   if (target.length < source.length && target.width < source.width) {
     throw new TargetRectangleSizeError();
   }
 
+  const orientations = inAllOrientations ? source.orientations() : [source];
   const result: PackResult[] = [];
 
-  source.orientations().forEach(orientation => {
+  orientations.forEach(orientation => {
     for (let i = orientation.width; i <= target.width; i += orientation.width) {
       for (
         let j = orientation.length;
@@ -27,8 +29,8 @@ export default function pack(
         const rectangle = new Rectangle(j, i);
         const length = rectangle.length;
         const width = rectangle.width;
-        const lengthAmount = rectangle.length / orientation.length;
-        const widthAmount = rectangle.width / orientation.width;
+        const lengthAmount = length / orientation.length;
+        const widthAmount = width / orientation.width;
         const totalAmount = lengthAmount * widthAmount;
         const wastePercentage = 1 - rectangle.area / target.area;
 
