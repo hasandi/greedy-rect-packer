@@ -1,8 +1,8 @@
 export default interface PackResult {
+  length: number;
   width: number;
-  height: number;
+  lengthAmount: number;
   widthAmount: number;
-  heightAmount: number;
   totalAmount: number;
   wastePercentage: number;
 }

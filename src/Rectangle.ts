@@ -4,59 +4,59 @@ import clone from 'lodash-es/clone';
  * Rectangle class.
  */
 export default class Rectangle {
+  private _length: number;
   private _width: number;
-  private _height: number;
 
   /**
    * Rectangular object constructor.
+   * @param length - the rectangular object length
    * @param width - the rectangular object width
-   * @param height - the rectangular object height
    */
-  constructor(width: number, height: number) {
+  constructor(length: number, width: number) {
+    this._length = length;
     this._width = width;
-    this._height = height;
   }
 
   /**
-   * Width getter.
+   * length getter.
+   */
+  get length(): number {
+    return this._length;
+  }
+
+  /**
+   * width getter.
    */
   get width(): number {
     return this._width;
   }
 
   /**
-   * Height getter.
-   */
-  get height(): number {
-    return this._height;
-  }
-
-  /**
    * Area getter.
    */
   get area(): number {
-    return this._width * this._height;
+    return this._length * this._width;
   }
 
   /**
    * Returns whether the rectangular object is a square.
    */
   isSquare(): boolean {
-    return this._width === this._height;
+    return this._length === this._width;
   }
 
   /**
    * Returns whether the rectangular object is in portrait orientation.
    */
   isPortrait(): boolean {
-    return this.isSquare() ? true : this.width < this.height;
+    return this.isSquare() ? true : this.length < this.width;
   }
 
   /**
    * Returns whether the rectangular object is in landscape orientation.
    */
   isLandscape(): boolean {
-    return this.isSquare() ? true : this.height < this.width;
+    return this.isSquare() ? true : this.width < this.length;
   }
 
   /**
@@ -92,7 +92,7 @@ export default class Rectangle {
    */
   rotate90Deg(): Rectangle {
     const rect = clone(this);
-    [rect._width, rect._height] = [rect._height, rect._width];
+    [rect._length, rect._width] = [rect._width, rect._length];
 
     return rect;
   }

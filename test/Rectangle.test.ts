@@ -1,10 +1,10 @@
 import Rectangle from '../src/Rectangle';
 
-test('has width and height which were numbers', () => {
+test('has length and width which were numbers', () => {
   const rect = new Rectangle(20, 10);
 
+  expect(typeof rect.length).toBe('number');
   expect(typeof rect.width).toBe('number');
-  expect(typeof rect.height).toBe('number');
 });
 
 test('its area can be calculated', () => {
@@ -41,8 +41,8 @@ test('can be rotated', () => {
   const rect = new Rectangle(20, 10);
   const rotatedRect = rect.rotate90Deg();
 
-  expect(rotatedRect.width).toBe(10);
-  expect(rotatedRect.height).toBe(20);
+  expect(rotatedRect.length).toBe(10);
+  expect(rotatedRect.width).toBe(20);
 });
 
 test('can get all orientations', () => {

@@ -11,36 +11,32 @@ export default function pack(
   source: Rectangle,
   target: Rectangle,
 ): PackResult[] {
-  if (target.width < source.width && target.height < source.height) {
+  if (target.length < source.length && target.width < source.width) {
     throw new TargetRectangleSizeError();
   }
 
   const result: PackResult[] = [];
 
   source.orientations().forEach(orientation => {
-    for (
-      let i = orientation.height;
-      i <= target.height;
-      i += orientation.height
-    ) {
+    for (let i = orientation.width; i <= target.width; i += orientation.width) {
       for (
-        let j = orientation.width;
-        j <= target.width;
-        j += orientation.width
+        let j = orientation.length;
+        j <= target.length;
+        j += orientation.length
       ) {
         const rectangle = new Rectangle(j, i);
+        const length = rectangle.length;
         const width = rectangle.width;
-        const height = rectangle.height;
+        const lengthAmount = rectangle.length / orientation.length;
         const widthAmount = rectangle.width / orientation.width;
-        const heightAmount = rectangle.height / orientation.height;
-        const totalAmount = widthAmount * heightAmount;
+        const totalAmount = lengthAmount * widthAmount;
         const wastePercentage = 1 - rectangle.area / target.area;
 
         result.push({
+          length,
           width,
-          height,
+          lengthAmount,
           widthAmount,
-          heightAmount,
           totalAmount,
           wastePercentage,
         });

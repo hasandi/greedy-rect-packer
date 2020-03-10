@@ -11,44 +11,40 @@ export default function packMinWaste(
   source: Rectangle,
   target: Rectangle,
 ): PackResult {
-  if (target.width < source.width && target.height < source.height) {
+  if (target.length < source.length && target.width < source.width) {
     throw new TargetRectangleSizeError();
   }
 
   let result: PackResult = {
+    length: 1,
     width: 1,
-    height: 1,
+    lengthAmount: 1,
     widthAmount: 1,
-    heightAmount: 1,
     totalAmount: 1,
     wastePercentage: 1,
   };
 
   source.orientations().forEach(orientation => {
-    for (
-      let i = orientation.height;
-      i <= target.height;
-      i += orientation.height
-    ) {
+    for (let i = orientation.width; i <= target.width; i += orientation.width) {
       for (
-        let j = orientation.width;
-        j <= target.width;
-        j += orientation.width
+        let j = orientation.length;
+        j <= target.length;
+        j += orientation.length
       ) {
         const rectangle = new Rectangle(j, i);
+        const length = rectangle.length;
         const width = rectangle.width;
-        const height = rectangle.height;
+        const lengthAmount = rectangle.length / orientation.length;
         const widthAmount = rectangle.width / orientation.width;
-        const heightAmount = rectangle.height / orientation.height;
-        const totalAmount = widthAmount * heightAmount;
+        const totalAmount = lengthAmount * widthAmount;
         const wastePercentage = 1 - rectangle.area / target.area;
 
         if (!result || wastePercentage < result.wastePercentage) {
           result = {
+            length,
             width,
-            height,
+            lengthAmount,
             widthAmount,
-            heightAmount,
             totalAmount,
             wastePercentage,
           };
