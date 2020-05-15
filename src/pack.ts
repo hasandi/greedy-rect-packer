@@ -19,7 +19,7 @@ export default function pack(
   const orientations = inAllOrientations ? source.orientations() : [source];
   const result: PackResult[] = [];
 
-  orientations.forEach(orientation => {
+  orientations.forEach((orientation) => {
     for (let i = orientation.width; i <= target.width; i += orientation.width) {
       for (
         let j = orientation.length;

@@ -24,7 +24,7 @@ export default function packMinWaste(
     wastePercentage: 1,
   };
 
-  source.orientations().forEach(orientation => {
+  source.orientations().forEach((orientation) => {
     for (let i = orientation.width; i <= target.width; i += orientation.width) {
       for (
         let j = orientation.length;
